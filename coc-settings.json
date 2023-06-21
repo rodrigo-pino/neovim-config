@@ -1,0 +1,108 @@
+{
+  "hover.floatConfig": {
+    "rounded": true,
+    "border": true,
+    "shadow": true,
+    "winblend": 0,
+    "highlight": "CocFloating"
+  },
+
+  "suggest.floatConfig": {
+    "border": true,
+    "shadow": true,
+    "rounded": true
+  },
+
+  // Find appropiate
+  //"suggest.completionItemKindLabels": {
+  //  "method": "  ",
+  //  "function": "  ",
+  //  "variable": "[]",
+  //  "field": "  ",
+  //  "typeParameter": "<>",
+  //  "constant": "  ",
+  //  "class": " פּ ",
+  //  "interface": " 蘒",
+  //  "struct": "  ",
+  //  "event": "  ",
+  //  "operator": "  ",
+  //  "module": "  ",
+  //  "property": "  ",
+  //  "enum": " 練",
+  //  "reference": "  ",
+  //  "keyword": "  ",
+  //  "file": "  ",
+  //  "folder": " ﱮ ",
+  //  "color": "  ",
+  //  "unit": " 塞 ",
+  //  "snippet": "  ",
+  //  "text": "  ",
+  //  "constructor": "  ",
+  //  "value": "  ",
+  //  "enumMember": "  "
+  //},
+
+  "coc.preferences.willSaveHandlerTimeout": 500,
+  "coc.preferences.formatOnSave": true,
+
+  "pyright.enable": true,
+  "python.venvPath": "~/.cache/pypoetry/virtualenvs/",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/home/rodro/.pyenv/versions/black/bin/black",
+  "python.formatting.blackArgs": ["--target-version=py310", "--fast"],
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "/home/rodro/.pyenv/versions/3.9.9/bin/flake8",
+  "python.linting.flake8Args": ["--max-line-length 99"],
+
+  "eslint.run": "onType",
+  "eslint.format.enable": true,
+  "eslint.lintTask.options": ["--ignore-pattern", "*.ts"],
+  "eslint.enable": false,
+
+  "markdownlint.config": { "line-length": false },
+
+  "explorer.git.enable": true,
+  "explorer.mouseMode": "singleclick",
+  // "explorer.icon.enableNerdfont": true,
+  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+
+  "coc.source.vimtex.enable": true,
+
+  "toml.schema.associations": {
+    "^(.*(/|\\\\)\\.?taplo\\.toml|\\.?taplo\\.toml)$": "taplo://taplo.toml"
+  },
+
+  "languageserver": {
+    "csharp-ls": {
+      "command": "csharp-ls",
+      "filetypes": ["cs"],
+      "rootPatterns": ["*.csproj", ".vim/", ".git", ".hg/"]
+    },
+    "cairo": {
+      "command": "cairo-language-server",
+      "filetypes": ["cairo"],
+      "rootPatterns": ["Scarb.toml", "cairo_project.toml", ".git"]
+    }
+    // "haskell": {
+    //   "command": "haskell-language-server-wrapper",
+    //   "args": ["--lsp"],
+    //   "rootPatterns": [
+    //     "*.cabal",
+    //     "stack.yaml",
+    //     "cabal.project",
+    //     "package.yaml",
+    //     "hie.yaml"
+    //   ],
+    //   "filetypes": ["haskell", "lhaskell"],
+    //   "initializationOptions": {
+    //     "languageServerHaskell": {
+    //       "hlint": true,
+    //       "completionSnippetsOn": true,
+    //       "formattingProvider": "ormolu"
+    //     }
+    //   }
+    // }
+  },
+  "snippets.ultisnips.pythonPrompt": false
+}
