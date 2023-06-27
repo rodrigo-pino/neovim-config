@@ -15,11 +15,13 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
 " Main Plugin
 Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 """""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""
-
 
 " DAP (Debug Adapter Protocol)
 Plug 'mfussenegger/nvim-dap'
@@ -146,9 +148,9 @@ let g:coc_global_extensions=[
      \ 'coc-pairs',
      \ 'coc-highlight',
      \ 'coc-solidity',
-     \ 'coc-lua'
      \ ]
-  " "\ 'coc-floatinput', 
+  " \ 'coc-lua'
+  " \ 'coc-floatinput', 
   " \ 'coc-cairo',
   " \ 'coc-css',
   " \ 'coc-html',
@@ -302,7 +304,6 @@ tnoremap <silent> <C-P> <C-\><C-N>:bprev<CR>
 " coc-explorer mapping
 :nnoremap <silent> <space>e :CocCommand explorer --preset floatingLeftSide<CR>
 :nnoremap <silent> <space>fe :CocCommand explorer<CR>
-
 " code actions by coc.nvim
 xmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
@@ -381,4 +382,4 @@ nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 
 
 luafile ~/.config/nvim/dap_config.lua
-"luafile ~/.config/nvim/lsp_zero_config.lua
+luafile ~/.config/nvim/lsp_zero_config.lua

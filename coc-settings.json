@@ -78,12 +78,12 @@
       "command": "csharp-ls",
       "filetypes": ["cs"],
       "rootPatterns": ["*.csproj", ".vim/", ".git", ".hg/"]
-    },
-    "cairo": {
-      "command": "cairo-language-server",
-      "filetypes": ["cairo"],
-      "rootPatterns": ["Scarb.toml", "cairo_project.toml", ".git"]
     }
+    //"cairo": {
+    //  "command": "cairo-language-server",
+    //  "filetypes": ["cairo"],
+    //  "rootPatterns": ["Scarb.toml", "cairo_project.toml", ".git"]
+    //}
     // "haskell": {
     //   "command": "haskell-language-server-wrapper",
     //   "args": ["--lsp"],

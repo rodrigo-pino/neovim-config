@@ -5,11 +5,26 @@ lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
 end)
 
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
 lsp.setup();
 
 
+-- CMP CONFIG
+local cmp = require('cmp')
+
+cmp.setup({
+    sources = {
+        { name = 'nvim_lsp' },
+    },
+    mapping = {
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+    }
+})
+
 -- MASON CONFIG
-require("mason").setup();
+require("mason").setup()
+require("mason-lspconfig").setup()
 
 local util = require 'lspconfig.util'
 
@@ -27,59 +42,34 @@ require('lspconfig.configs').cairo_language_server = {
 
 require('lspconfig').cairo_language_server.setup({})
 
--- CMP CONFIG
-local cmp = require('cmp')
-local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
+-- LSP CONFIG CONFIG
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
-    },
-    mapping = {
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<Up>'] = cmp.mapping.select_prev_item(cmp_select_opts),
-        ['<Down>'] = cmp.mapping.select_next_item(cmp_select_opts),
-        ['<C-p>'] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.select_prev_item(cmp_select_opts)
-            else
-                cmp.complete()
-            end
-        end),
-        ['<C-n>'] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.select_next_item(cmp_select_opts)
-            else
-                cmp.complete()
-            end
-        end),
-    },
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-    window = {
-        documentation = {
-            max_height = 15,
-            max_width = 60,
-        }
-    },
-    formatting = {
-        fields = { 'abbr', 'menu', 'kind' },
-        format = function(entry, item)
-            local short_name = {
-                nvim_lsp = 'LSP',
-                nvim_lua = 'nvim'
-            }
-
-            local menu_name = short_name[entry.source.name] or entry.source.name
-
-            item.menu = string.format('[%s]', menu_name)
-            return item
-        end,
-    },
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
 })
