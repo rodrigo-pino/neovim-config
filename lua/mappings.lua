@@ -15,9 +15,9 @@ vim.api.nvim_set_keymap('n', '¬', '<C-w>l', { noremap = true })
 
 -- BufferLine (move buffers around)
 vim.keymap.set('n', '<leader>bp', ':BufferLineTogglePin<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>db', ':BufferLinePickClose<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d', ':BufferLinePickClose<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-n>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-p>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<˜>', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<π>', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
 

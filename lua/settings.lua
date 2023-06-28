@@ -38,4 +38,15 @@ vim.opt.termguicolors = true
 
 -- Python 3 Provider
 vim.g.python3_host_prog='~/.pyenv/versions/neovim/bin/python'
+
 vim.cmd [[filetype plugin indent on]]
+vim.cmd [[
+  augroup MyAutoCmd
+    autocmd!
+    autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
+    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+    autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
+    autocmd FileType json setlocal shiftwidth=2 tabstop=2
+  augroup END
+]]
+
