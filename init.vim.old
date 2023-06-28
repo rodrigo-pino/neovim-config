@@ -381,5 +381,5 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 
 
-luafile ~/.config/nvim/dap_config.lua
-luafile ~/.config/nvim/lsp_zero_config.lua
+luafile ~/.config/nvim/lua/dap_config.lua
+luafile ~/.config/nvim/lua/lsp.lua
