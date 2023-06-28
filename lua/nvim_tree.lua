@@ -5,5 +5,8 @@ require("nvim-tree").setup(
                 enable = false,
             }
         },
+        diagnostics = {
+            enable = true,
+        }
     }
 );

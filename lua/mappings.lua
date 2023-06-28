@@ -33,6 +33,9 @@ vim.keymap.set('n', '<leader>hn', require("harpoon.ui").nav_next, {})
 vim.keymap.set('n', '<leader>hp', require("harpoon.ui").nav_prev, {})
 
 
+-- Git Signs
+-- to be done
+
 -- Telescope (fuzzy finder)
 -- misc
 local builtin = require('telescope.builtin')
@@ -53,7 +56,7 @@ vim.keymap.set('n', '<leader>ftd', builtin.lsp_type_definitions, {})
 
 -- NvimTree (file explorer)
 local api = require("nvim-tree.api")
-vim.keymap.set('n', '<space>e', api.tree.toggle, {})
+vim.keymap.set('n', '<space>e', ':NvimTreeFindFileToggle<CR>', {})
 
 -- LSP CONFIG CONFIG
 -- Use LspAttach autocommand to only map the following keys

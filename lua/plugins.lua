@@ -11,12 +11,12 @@ require("lazy").setup({
     -- Native LSP Support
     "neovim/nvim-lspconfig",
     -- Remove LSP Boiler plate + UI
-    "williamboman/mason.nvim",
+    { "williamboman/mason.nvim", run = ":MasonUpdate" },
     "williamboman/mason-lspconfig.nvim",
     -- Auto completion for LSP
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
-    "L3MON4D3/LuaSnip",
+    { "L3MON4D3/LuaSnip",        version = "v1.*",    build = "make install_jsregexp" },
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
@@ -59,11 +59,19 @@ require("lazy").setup({
     -- TODO: See how to modify tabs to my pleasing
     { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 
-    -- Helpers
+    -- HELPERS
     -- Resizing Window: Ctrl-e to activate, hjkl to move and e to change modes
     'simeji/winresizer',
 
-    -- which key?
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {}
+    },
+
+    'RRethy/vim-illuminate',
+
+    -- which key
     -- TODO: set documentation of my sutff!
     {
         "folke/which-key.nvim",
@@ -93,6 +101,10 @@ require('nvim-web-devicons').setup({
     default = true,
 })
 
+require("illuminate").configure({
+    delay = 300
+})
+
 -- This needs to go before bufferline
 vim.cmd([[colorscheme dracula]])
 vim.cmd 'highligh NormalFloat guibg=#21232c'
@@ -117,3 +129,10 @@ bufferline.setup({
         }
     }
 });
+
+require("illuminate").configure({
+    delay = 555
+})
+vim.cmd([[highligh IlluminatedWordRead  guibg=#21222c gui=none]])
+vim.cmd([[highligh IlluminatedWordWrite guibg=#21222c gui=none]])
+vim.cmd([[highligh IlluminatedWordText guibg=#21222c gui=none]])
