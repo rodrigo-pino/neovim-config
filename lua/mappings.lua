@@ -1,11 +1,16 @@
 vim.g.mapleader = ","
 
+-- Treat long lines as multi lines
 vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
 vim.api.nvim_set_keymap('v', 'j', 'gj', { noremap = true })
 vim.api.nvim_set_keymap('v', 'k', 'gk', { noremap = true })
 
+-- Save with Ctrl-S
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true });
+
+-- Delete the buffer without deleting the window
+vim.keymap.set('n', '<leader>d', ':bp\\|bd #<CR>', { noremap = true, silent = true })
 
 -- Move through windows using local handles
 vim.api.nvim_set_keymap('n', '˙', '<C-w>h', { noremap = true })
@@ -15,7 +20,7 @@ vim.api.nvim_set_keymap('n', '¬', '<C-w>l', { noremap = true })
 
 -- BufferLine (move buffers around)
 vim.keymap.set('n', '<leader>bp', ':BufferLineTogglePin<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>d', ':BufferLinePickClose<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bd', ':BufferLinePickClose<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-n>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-p>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<˜>', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })

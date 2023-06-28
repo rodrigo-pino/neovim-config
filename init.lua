@@ -1,10 +1,12 @@
-require('lua/settings')
-require('lua/plugins')
-require('lua/themes')
-require('lua/mappings')
+local lua_path = vim.fn.stdpath('config') .. '/lua'
+package.path = package.path .. ';' .. lua_path
 
-require('lua/telescope_config')
-require('lua/nvim_tree')
-require('lua/lsp')
+require('settings')
+require('plugins')
+require('themes')
+require('mappings')
+
+require('telescope_config')
+require('nvim_tree')
+require('lsp')
 -- require('lua/dap_config')
-
