@@ -14,18 +14,18 @@ lsp.setup();
 local cmp = require('cmp')
 cmp.setup({
     snippet = {
-      expand = function(args)
-        require'luasnip'.lsp_expand(args.body)
-      end
+        expand = function(args)
+            require 'luasnip'.lsp_expand(args.body)
+        end
     },
     sources = {
         { name = 'path' },
         { name = 'nvim_lsp' },
-        { name = 'buffer', keyword_length = 3 },
+        { name = 'buffer',  keyword_length = 3 },
         { name = 'luasnip', keyword_length = 2 },
     },
     mapping = {
-        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
     }
 })
 
@@ -53,6 +53,6 @@ require('lspconfig').cairo_language_server.setup({})
 -- Change default sideline diagnostics
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
