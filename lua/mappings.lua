@@ -10,7 +10,7 @@ vim.api.nvim_set_keymap('v', 'k', 'gk', { noremap = true })
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true });
 
 -- Delete the buffer without deleting the window
-vim.keymap.set('n', '<leader>d', ':bp\\|bd #<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d', ':BufferLineCyclePrev\\|bd #<CR>', { noremap = true, silent = true })
 
 -- Move through windows using local handles
 -- vim.api.nvim_set_keymap('n', '˙', '<C-w>h', { noremap = true, silent = true })
@@ -29,8 +29,8 @@ vim.keymap.set('n', '<leader>bp', ':BufferLineTogglePin<CR>', { noremap = true, 
 vim.keymap.set('n', '<leader>bd', ':BufferLinePickClose<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-n>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-p>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<˜>', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<π>', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '˜', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'π', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
 
 -- Harpoon (mark files)
 vim.keymap.set('n', '<leader>m', require("harpoon.mark").add_file, {})
@@ -95,4 +95,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, opts)
     end,
 })
-
