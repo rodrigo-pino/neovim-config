@@ -1,16 +1,19 @@
-require("lazy").setup({
-    -- Git
+require("lazy").setup({ -- Git
     -- TODO: Config keywords
     "lewis6991/gitsigns.nvim",
     -- check diffview
-    -- check vimfugitive
+    "tpope/vim-fugitive",
 
     -- Syntasx Highlighting
     "nvim-treesitter/nvim-treesitter",
 
+    -- TMUX Config
+    "christoomey/vim-tmux-navigator",
+
+    -- LSP Stuff
     -- Native LSP Support
     "neovim/nvim-lspconfig",
-    -- Remove LSP Boiler plate + UI
+    -- Allows easy installation of lsps + other stuff
     { "williamboman/mason.nvim", run = ":MasonUpdate" },
     "williamboman/mason-lspconfig.nvim",
     -- Auto completion for LSP
@@ -20,8 +23,10 @@ require("lazy").setup({
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
-    -- Boiler plate to connect LSP with CMP
+    -- Makes interacting with LSP easier
     { "VonHeikemen/lsp-zero.nvim", branch = "v2.x" },
+    -- Improve natie lsp capabilites
+    "jose-elias-alvarez/null-ls.nvim",
 
     -- Telescope
     {
@@ -46,18 +51,21 @@ require("lazy").setup({
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
-        config = function()
-            require("nvim-tree").setup {}
-        end,
+        lazy = false,
     },
 
     -- Themes
-    { "Mofiqul/dracula.nvim",      priority = -1000 },
+    { "Mofiqul/dracula.nvim" },
+    { "catppuccin/nvim",           name = "catppuccin", priority = 1000 },
 
     -- Bars
     "nvim-lualine/lualine.nvim",
     -- TODO: See how to modify tabs to my pleasing
-    { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+    {
+        "akinsho/bufferline.nvim",
+        version = "*",
+        dependencies = "nvim-tree/nvim-web-devicons",
+    },
 
     -- HELPERS
     -- Resizing Window: Ctrl-e to activate, hjkl to move and e to change modes
@@ -97,42 +105,72 @@ require("nvim-treesitter.configs").setup({
         enable = true
     },
 })
+
 require('nvim-web-devicons').setup({
     default = true,
 })
 
-require("illuminate").configure({
-    delay = 300
+-- Themes needs to go before bufferline
+------------------ Dracula Config -------------------
+-- vim.cmd([[colorscheme dracula]])
+-- vim.cmd 'highligh NormalFloat guibg=#21232c'
+-- vim.cmd 'highlight FloatBorder guibg=#21232c'
+---------------- Cattpuccin Config ------------------
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = {     -- :h background
+        light = "latte",
+        dark = "mocha",
+    },
+    dim_inactive = {
+        enabled = true,
+        shade = "dark",
+        percentage = "0.15"
+    },
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        harpoon = true,
+        mason = true,
+        which_key = true
+    }
 })
+vim.cmd([[colorscheme catppuccin]])
 
--- This needs to go before bufferline
-vim.cmd([[colorscheme dracula]])
-vim.cmd 'highligh NormalFloat guibg=#21232c'
-vim.cmd 'highlight FloatBorder guibg=#21232c'
 
 require("lualine").setup({
     options = { theme = 'auto' }
 });
+
 local bufferline = require("bufferline")
 bufferline.setup({
     options = {
         diagnostics = "nvim_lsp",
         style_preset = bufferline.style_preset.default,
+
         separator_style = "slope",
-        show_buffer_close_icons = false,
+
+        -- This appears not to be working
         offsets = {
             filetype = "NvimTree",
             text = "File Explorer",
-            separator = true,
-            highlight = "Directory",
             text_align = "left",
+            separator = true,
+        },
+        -- This appears not to be working
+        hover = {
+            enabled = true,
+            delay = 200,
+            reveal = { 'close' }
         }
-    }
+    },
 });
 
 require("illuminate").configure({
     delay = 555
 })
-vim.cmd([[highligh IlluminatedWordRead  guibg=#21222c gui=none]])
-vim.cmd([[highligh IlluminatedWordWrite guibg=#21222c gui=none]])
-vim.cmd([[highligh IlluminatedWordText guibg=#21222c gui=none]])
+--vim.cmd([[highligh IlluminatedWordRead  guibg=#21222c gui=none]])
+--vim.cmd([[highligh IlluminatedWordWrite guibg=#21222c gui=none]])
+--vim.cmd([[highligh IlluminatedWordText guibg=#21222c gui=none]])

@@ -29,9 +29,21 @@ cmp.setup({
     }
 })
 
+-- NULL LS
+-- local null_ls = require("null-ls")
+-- 
+-- null_ls.setup({
+--     sources = {
+--         null_ls.builtins.formatting.stylua,
+--         null_ls.builtins.diagnostics.eslint,
+--         null_ls.builtins.completion.spell,
+--     },
+-- })
+
 -- MASON CONFIG
 require("mason").setup()
 require("mason-lspconfig").setup()
+
 
 local util = require 'lspconfig.util'
 
@@ -42,7 +54,7 @@ require('lspconfig.configs').cairo_language_server = {
         cmd = { 'cairo-language-server' },
         filetypes = { 'cairo' },
         root_dir = function(fname)
-            return util.root_pattern 'Scarb.tom' (fname)
+            return util.root_pattern 'Scarb.toml' (fname)
                 or util.root_pattern('Scarb.toml', 'cairo_project.toml', '.git')(fname)
         end,
     }

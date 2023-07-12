@@ -26,6 +26,7 @@ vim.wo.number = true  -- Add line numbers
 vim.wo.cursorline = true
 vim.o.splitbelow = true  -- Split windows below the current one
 vim.o.splitright = true  -- Split windows to the right of the current one
+vim.o.mouse = "a" -- active mouse events, apparently not needed by Iterm 2
 
 vim.o.signcolumn = "yes"
 
