@@ -33,10 +33,10 @@ vim.keymap.set('n', '˜', ':BufferLineMoveNext<CR>', { noremap = true, silent = 
 vim.keymap.set('n', 'π', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
 
 -- Harpoon (mark files)
-vim.keymap.set('n', '<leader>m', require("harpoon.mark").add_file, {})
-vim.keymap.set('n', '<leader>hh', require("harpoon.ui").toggle_quick_menu, {})
-vim.keymap.set('n', '<leader>hn', require("harpoon.ui").nav_next, {})
-vim.keymap.set('n', '<leader>hp', require("harpoon.ui").nav_prev, {})
+vim.keymap.set('n', 'hh', require("harpoon.mark").add_file, {})
+vim.keymap.set('n', 'hm', require("harpoon.ui").toggle_quick_menu, {})
+vim.keymap.set('n', 'hn', require("harpoon.ui").nav_next, {})
+vim.keymap.set('n', 'hN', require("harpoon.ui").nav_prev, {})
 
 
 -- Git Signs
@@ -46,10 +46,11 @@ vim.keymap.set('n', '<leader>hp', require("harpoon.ui").nav_prev, {})
 -- misc
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
+vim.keymap.set('n', '<leader>fs', builtin.current_buffer_fuzzy_find, {})
 -- git
 vim.keymap.set('n', '<leader>fgc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>fgs', builtin.git_status, {})
@@ -59,6 +60,10 @@ vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>fdd', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>fd', builtin.lsp_definitions, {})
 vim.keymap.set('n', '<leader>ftd', builtin.lsp_type_definitions, {})
+
+vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
+vim.keymap.set('n', '<leader>fx', builtin.builtin, {})
+
 
 -- NvimTree (file explorer)
 local api = require("nvim-tree.api")

@@ -18,14 +18,13 @@ require("lazy").setup({ -- Git
 	"williamboman/mason-lspconfig.nvim",
 	-- Auto completion for LSP
 	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",-- Autocomplete based on buffer diagnostics
+	"hrsh7th/cmp-nvim-lsp", -- Autocomplete based on buffer diagnostics
 	{ "L3MON4D3/LuaSnip", version = "v1.*", build = "make install_jsregexp" },
 	"hrsh7th/cmp-buffer", -- Autocomplete based on previous buffer words
 	"hrsh7th/cmp-path", -- Autocomplete path
-    "hrsh7th/cmp-nvim-lsp-signature-help", -- Signature when writing functions
-
-
+	"hrsh7th/cmp-nvim-lsp-signature-help", -- Signature when writing functions
 	"saadparwaiz1/cmp_luasnip",
+
 	-- Makes interacting with LSP easier
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v2.x" },
 	-- Improve native lsp capabilites

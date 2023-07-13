@@ -25,7 +25,7 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" },
 	},
 	mapping = {
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
 })
 
@@ -37,8 +37,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 
 		null_ls.builtins.code_actions.gitsigns,
-
 		null_ls.builtins.diagnostics.commitlint,
+
 		null_ls.builtins.diagnostics.golangci_lint,
 
 		null_ls.builtins.diagnostics.solhint,
