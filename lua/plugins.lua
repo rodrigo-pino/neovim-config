@@ -62,14 +62,40 @@ require("lazy").setup({ -- Git
 
 	-- Bars
 	"nvim-lualine/lualine.nvim",
-	-- TODO: See how to delete tabs
 	-- TODO: See mouse hover events
 	-- TODO: See how get side tree offset
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"famiu/bufdelete.nvim", -- To use delete command
+		},
 	},
+	-- TODO: See mouse hover events
+	-- TODO: See how get side tree offset
+	-- TODO: How to get pretty theme
+	-- {
+	-- 	"romgrk/barbar.nvim",
+	-- 	dependencies = {
+	-- 		"lewis6991/gitsigns.nvim",
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 	},
+	-- 	init = function()
+	-- 		vim.g.barbar_auto_setup = false
+	-- 	end,
+	--     opts = {
+	--         animation = true,
+	--         icons = {
+	--              button = 'k',
+	--              separator = {left = "/", right = ''}
+	--         },
+	--         sidebar_filetypes = {
+	--             NvimTree = true,
+	--         }
+	--     },
+	-- 	version = "1.0.0",
+	-- },
 
 	-- HELPERS
 	-- Resizing Window: Ctrl-e to activate, hjkl to move and e to change modes
@@ -165,6 +191,8 @@ bufferline.setup({
 
 		separator_style = "slope",
 
+		close_command = "Bdelete! %d", -- using bufdelete dependency
+
 		-- This appears not to be working
 		offsets = {
 			filetype = "NvimTree",
@@ -184,5 +212,3 @@ require("illuminate").configure({
 	delay = 555,
 })
 --vim.cmd([[highligh IlluminatedWordRead  guibg=#21222c gui=none]])
---vim.cmd([[highligh IlluminatedWordWrite guibg=#21222c gui=none]])
---vim.cmd([[highligh IlluminatedWordText guibg=#21222c gui=none]])
