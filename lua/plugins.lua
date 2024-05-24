@@ -4,8 +4,44 @@ require("lazy").setup({ -- Git
 	-- check diffview
 	"tpope/vim-fugitive",
 
+	-- Latex Utilities
+	{
+		"lervag/vimtex",
+		lazy = false,
+	},
+
+	-- MD Preview
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mdkp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
+
+	-- for tsx development
+	-- used by treesitter in autotag option
+	"windwp/nvim-ts-autotag",
+
 	-- Syntasx Highlighting
-	"nvim-treesitter/nvim-treesitter",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
+			configs.setup({
+				highlight = {
+					enable = true,
+				},
+				-- depends on something?
+				autotag = {
+					enable = true,
+				},
+			})
+		end,
+	},
 
 	-- TMUX Config
 	"christoomey/vim-tmux-navigator",
@@ -28,7 +64,14 @@ require("lazy").setup({ -- Git
 	-- Makes interacting with LSP easier
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v2.x" },
 	-- Improve native lsp capabilites
+	-- Deprecated
 	"jose-elias-alvarez/null-ls.nvim",
+
+	-- rust-tools: provides a lot of nice things for rust development
+	"simrat39/rust-tools.nvim",
+
+	-- Copilot
+	-- "github/copilot.vim",
 
 	-- Telescope
 	{
@@ -130,11 +173,10 @@ require("gitsigns").setup({
 	current_line_blame = true,
 })
 
-require("nvim-treesitter.configs").setup({
-	highlight = {
-		enable = true,
-	},
-})
+-- Vim Tex configuration
+vim.cmd("filetype plugin indent on")
+vim.g.vimtex_view_method = "skim"
+vim.g.vimtex_compiler_method = "latexmk"
 
 require("nvim-web-devicons").setup({
 	default = true,
@@ -145,6 +187,7 @@ require("nvim-web-devicons").setup({
 -- vim.cmd([[colorscheme dracula]])
 -- vim.cmd 'highligh NormalFloat guibg=#21232c'
 -- vim.cmd 'highlight FloatBorder guibg=#21232c'
+
 ---------------- Cattpuccin Config ------------------
 require("catppuccin").setup({
 	flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -211,4 +254,4 @@ bufferline.setup({
 require("illuminate").configure({
 	delay = 555,
 })
---vim.cmd([[highligh IlluminatedWordRead  guibg=#21222c gui=none]])
+----vim.cmd([[highligh IlluminatedWordRead  guibg=#21222c gui=none]])

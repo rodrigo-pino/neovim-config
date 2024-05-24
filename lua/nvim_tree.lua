@@ -5,10 +5,6 @@ require("nvim-tree").setup({
 		float = {
 			enable = false,
 		},
-		mappings = {
-			custom_only = false,
-			list = {},
-		},
 	},
 	diagnostics = {
 		enable = true,

@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.o.nocompatible = true -- Disable compatibility to old-time vi
+-- vim.o.nocompatible = true -- Disable compatibility to old-time vi
 vim.o.showmatch = true -- Show matching brackets
 vim.o.ignorecase = true -- Case insensitive matching
 vim.o.hlsearch = true -- Highlight search results
@@ -25,11 +25,14 @@ vim.wo.number = true -- Add line numbers
 vim.wo.relativenumber = true
 vim.o.wildmode = "longest,list" -- Get bash-like tab completions
 vim.wo.cursorline = true
-vim.o.splitbelow = true -- Split windows below the current one
-vim.o.splitright = true -- Split windows to the right of the current one
+-- vim.o.splitbelow = true -- Split windows below the current one
+-- vim.o.splitright = true -- Split windows to the right of the current one
 vim.o.mouse = "a" -- active mouse events, apparently not needed by Iterm 2
 
 vim.o.signcolumn = "yes"
+
+-- Used spell languages, must go before netrw
+vim.opt.spelllang = { "en", "es" }
 
 -- Disable netrw
 vim.g.loaded_netrw = 1

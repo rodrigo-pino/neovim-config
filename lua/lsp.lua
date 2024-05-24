@@ -20,12 +20,15 @@ cmp.setup({
 	sources = {
 		{ name = "path" },
 		{ name = "nvim_lsp" },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "luasnip", keyword_length = 2 },
+		{
+			name = "buffer",
+			keyword_length = 3,
+		},
+		{
+			name = "luasnip",
+			keyword_length = 2,
+		},
 		{ name = "nvim_lsp_signature_help" },
-	},
-	mapping = {
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
 })
 
@@ -51,6 +54,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.csharpier,
 		-- null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.taplo,
+		null_ls.builtins.formatting.rustfmt,
+		null_ls.builtins.formatting.prettier,
 
 		null_ls.builtins.code_actions.gitsigns,
 
@@ -63,11 +70,16 @@ null_ls.setup({
 
 -- MASON CONFIG
 require("mason").setup()
+
+-- MASON LSP CONFIG
 require("mason-lspconfig").setup()
 
 local util = require("lspconfig.util")
 
--- Setting custom language server through MASON
+-- RUST-TOOLS CONFIG
+require("rust-tools").setup()
+
+-- LSP CONFIG
 require("lspconfig.configs").cairo_language_server = {
 	default_config = {
 		name = "cairo-language-server",
@@ -79,7 +91,7 @@ require("lspconfig.configs").cairo_language_server = {
 		end,
 	},
 }
-require("lspconfig").cairo_language_server.setup({})
+--require("lspconfig").cairo_language_server.setup({})
 
 -- Diagnostics
 -- Change default sideline diagnostics
