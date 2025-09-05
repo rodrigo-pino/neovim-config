@@ -60,18 +60,27 @@ require("lazy").setup({ -- Git
 	"hrsh7th/cmp-path", -- Autocomplete path
 	"hrsh7th/cmp-nvim-lsp-signature-help", -- Signature when writing functions
 	"saadparwaiz1/cmp_luasnip",
+	"petertriho/cmp-git",
 
 	-- Makes interacting with LSP easier
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v2.x" },
 	-- Improve native lsp capabilites
-	-- Deprecated
-	"jose-elias-alvarez/null-ls.nvim",
+	"nvimtools/none-ls.nvim",
 
 	-- rust-tools: provides a lot of nice things for rust development
 	"simrat39/rust-tools.nvim",
 
 	-- Copilot
 	-- "github/copilot.vim",
+
+	-- octo.nvim for reviewing PR from the confort of my terminal :)
+	{
+		"pwntester/octo.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 
 	-- Telescope
 	{

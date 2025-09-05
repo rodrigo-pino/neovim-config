@@ -19,6 +19,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "path" },
+		{ name = "git" },
 		{ name = "nvim_lsp" },
 		{
 			name = "buffer",
@@ -55,9 +56,9 @@ null_ls.setup({
 		null_ls.builtins.formatting.csharpier,
 		-- null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.taplo,
-		null_ls.builtins.formatting.rustfmt,
-		null_ls.builtins.formatting.prettier,
+		-- null_ls.builtins.formatting.taplo,
+		-- null_ls.builtins.formatting.rustfmt,
+		-- null_ls.builtins.formatting.prettier,
 
 		null_ls.builtins.code_actions.gitsigns,
 
@@ -91,6 +92,20 @@ require("lspconfig.configs").cairo_language_server = {
 		end,
 	},
 }
+
+vim.lsp.config("rust_analyzer", {
+	on_attach = function(_client, bufnr)
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+	end,
+	settings = {
+		["rust-analyzer"] = {
+			cargo = {
+				allFeatures = true,
+			},
+		},
+	},
+})
+
 --require("lspconfig").cairo_language_server.setup({})
 
 -- Diagnostics
@@ -100,3 +115,5 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+vim.diagnostic.config({ virtual_text = true })
