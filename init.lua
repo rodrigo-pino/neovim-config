@@ -1,13 +1,6 @@
-local lua_path = vim.fn.stdpath("config") .. "/lua"
-package.path = package.path .. ";" .. lua_path
+local lua_path = vim.fn.stdpath("config") .. "/lua/?.lua"
+local langs_path = vim.fn.stdpath("config") .. "/lua/plugins/?.lua"
+package.path = package.path .. ";" .. lua_path .. ";" .. langs_path
 
 require("settings")
-require("plugins")
-require("nvim_tree")
-require("mappings")
-
-require("telescope_config")
-require("octo_config")
-require("lsp")
-
--- require('lua/dap_config')
+require("lazy_config")

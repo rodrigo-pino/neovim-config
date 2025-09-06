@@ -106,7 +106,7 @@ vim.lsp.config("rust_analyzer", {
 	},
 })
 
---require("lspconfig").cairo_language_server.setup({})
+-- require("lspconfig").cairo_language_server.setup({})
 
 -- Diagnostics
 -- Change default sideline diagnostics
