@@ -24,7 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Some helpful mapping (unsure were to place it)
 vim.g.mapleader = ","
 -- Save with Ctrl-S
-vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true })
+vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
 
 -- Treat long lines as multi lines
 vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
@@ -41,3 +41,8 @@ require("lazy").setup({
 	-- check for updates automatically
 	checker = { enabled = true },
 })
+
+-- colorscheme options
+-- vim.cmd([[colorscheme catppuccin]])
+-- vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme kanagawa]])

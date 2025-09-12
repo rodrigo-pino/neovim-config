@@ -1,10 +1,10 @@
 return {
 	{
-	 "Mofiqul/dracula.nvim",
- 	},
-	{ 
-		"catppuccin/nvim", 
-		name = "catppuccin", 
+		"Mofiqul/dracula.nvim",
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
@@ -28,7 +28,20 @@ return {
 					which_key = true,
 				},
 			})
-        vim.cmd([[colorscheme catppuccin]])
-		end
+		end,
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			dim_inactive = true,
+		},
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		opts = {
+			dim_inactive = true,
+		},
 	},
 }
