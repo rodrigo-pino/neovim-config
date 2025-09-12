@@ -8,6 +8,8 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					go = { "gofumpt" },
+					toml = { "taplo" },
+					rust = { "rustfmt" },
 				},
 			})
 
